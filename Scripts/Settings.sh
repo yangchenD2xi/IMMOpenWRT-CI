@@ -4,7 +4,7 @@
 sed -i "s/luci-theme-bootstrap/luci-theme-$WRT_THEME/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 #修改immortalwrt.lan关联IP
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/$WRT_IP/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-# ==================== 优化 TurboACC 依赖 ====================
+#优化 TurboACC 依赖
 if [ -f "package/turboacc/luci-app-turboacc/Makefile" ]; then
     echo "⚙️ 修正 luci-app-turboacc Makefile 依赖项..."
     sed -i '/kmod-fast-classifier/d' package/turboacc/luci-app-turboacc/Makefile
