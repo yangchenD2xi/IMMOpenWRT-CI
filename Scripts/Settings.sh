@@ -53,9 +53,9 @@ echo "CONFIG_PACKAGE_luci-theme-$WRT_THEME=y" >> ./.config
 echo "CONFIG_PACKAGE_luci-app-$WRT_THEME-config=y" >> ./.config
 
 #启用 opkg 支持
-echo "CONFIG_PACKAGE_opkg=y" >> $CONFIG_FILE
-echo "CONFIG_PACKAGE_opkg-key=y" >> $CONFIG_FILE
-echo "CONFIG_PACKAGE_opkg-utils=y" >> $CONFIG_FILE
+echo "CONFIG_PACKAGE_opkg=y" >> .config
+echo "CONFIG_PACKAGE_opkg-key=y" >> .config
+echo "CONFIG_PACKAGE_opkg-utils=y" >> .config
 
 #手动调整的插件
 if [ -n "$WRT_PACKAGE" ]; then
