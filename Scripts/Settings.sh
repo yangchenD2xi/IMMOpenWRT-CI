@@ -2,6 +2,9 @@
 
 #修改默认主题
 sed -i "s/luci-theme-bootstrap/luci-theme-$WRT_THEME/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
+#Aurora主题垂直菜单调整
+sed -i 's/flex-direction: *row/flex-direction: column/g' \
+$(find ./feeds/luci/themes/luci-theme-aurora/ -type f -name "*.css")
 #修改immortalwrt.lan关联IP
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/$WRT_IP/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 #优化 TurboACC 依赖
