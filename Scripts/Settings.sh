@@ -4,8 +4,22 @@
 sed -i "s/luci-theme-bootstrap/luci-theme-$WRT_THEME/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 #修改immortalwrt.lan关联IP
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/$WRT_IP/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+# ==================== 优化 TurboACC 依赖 ====================
+if [ -f "package/turboacc/luci-app-turboacc/Makefile" ]; then
+    echo "⚙️ 修正 luci-app-turboacc Makefile 依赖项..."
+    sed -i '/kmod-fast-classifier/d' package/turboacc/luci-app-turboacc/Makefile
+    sed -i '/kmod-shortcut-fe-cm/d' package/turboacc/luci-app-turboacc/Makefile
+    sed -i '/kmod-shortcut-fe-drv/d' package/turboacc/luci-app-turboacc/Makefile
+    # 如果你启用 NSS 加速（推荐），则只保留 luci-base
+    # sed -i 's/DEPENDS:=.*/DEPENDS:=+luci-base/' package/turboacc/luci-app-turboacc/Makefile
+    # 如果你想保留 NAT/BBR 加速，也可以用下面这一行代替上一行：
+    sed -i 's/DEPENDS:=.*/DEPENDS:=+luci-base +kmod-nft-offload +kmod-tcp-bbr/' package/turboacc/luci-app-turboacc/Makefile
+else
+    echo "⚠️ 未找到 luci-app-turboacc 目录，跳过优化。"
+fi
+
 #添加编译日期标识（保留动态版本号 + 添加定制信息）
-sed -i "s/(\(luciversion || ''\))/(\\1) + (' \/ ImmortalWRT 24.10.4 \/ Build：${WRT_MARK} \/ Build time：$(date +%Y.%m.%d)')/g" \
+sed -i "s/\(luciversion || ''\)/'ImmortalWRT 24.10.4 \/ Build: YangChen \/ Build time: $(date +%Y.%m.%d)'/" \
 $(find ./feeds/luci/modules/luci-mod-status/ -type f -name "10_system.js")
 
 WIFI_SH=$(find ./target/linux/{mediatek/filogic,qualcommax}/base-files/etc/uci-defaults/ -type f -name "*set-wireless.sh" 2>/dev/null)
