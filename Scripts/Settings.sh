@@ -3,14 +3,6 @@
 #修改默认主题
 sed -i "s/luci-theme-bootstrap/luci-theme-$WRT_THEME/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 
-#修改 Aurora 主题二级菜单为竖排布局
-AURORA_CSS="./feeds/luci/themes/luci-theme-aurora/htdocs/luci-static/aurora/main.css"
-if [ -f "$AURORA_CSS" ]; then
-    echo "" >> $AURORA_CSS
-    echo "/* 二级菜单竖排布局（by yangchenD2xi） */" >> $AURORA_CSS
-    echo ".luci-submenu { display: flex !important; flex-direction: column !important; align-items: flex-start !important; row-gap: 6px !important; padding-left: 10px !important; }" >> $AURORA_CSS
-fi
-
 #修改immortalwrt.lan关联IP
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/$WRT_IP/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 
