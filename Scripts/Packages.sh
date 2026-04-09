@@ -73,7 +73,7 @@ UPDATE_PACKAGE "viking" "VIKINGYFY/packages" "main" "" "luci-app-timewol luci-ap
 UPDATE_PACKAGE "vnt" "lmq8267/luci-app-vnt" "main"
 UPDATE_PACKAGE "turboacc" "chenmozhijin/turboacc" "luci" "add_turboacc.sh"
 UPDATE_PACKAGE "luci-app-adguardhome" "kenzok8/openwrt-packages" "master" "pkg" 
-UPDATE_PACKAGE "luci-app-passwall" "kenzok8/openwrt-packages" "master" "pkg" 
+UPDATE_PACKAGE "luci-app-passwall" "kenzok8/small" "master" "pkg" 
 
 #更新软件包版本
 UPDATE_VERSION() {
