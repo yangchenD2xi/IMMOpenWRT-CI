@@ -71,9 +71,10 @@ UPDATE_PACKAGE "qmodem" "FUjr/QModem" "main"
 UPDATE_PACKAGE "quickfile" "sbwml/luci-app-quickfile" "main"
 UPDATE_PACKAGE "viking" "VIKINGYFY/packages" "main" "" "luci-app-timewol luci-app-wolplus"
 UPDATE_PACKAGE "vnt" "lmq8267/luci-app-vnt" "main"
-UPDATE_PACKAGE "turboacc" "chenmozhijin/turboacc" "luci" "add_turboacc.sh"
+# UPDATE_PACKAGE "turboacc" "chenmozhijin/turboacc" "luci" "add_turboacc.sh"
 UPDATE_PACKAGE "luci-app-adguardhome" "kenzok8/openwrt-packages" "master" "pkg" 
 UPDATE_PACKAGE "luci-app-passwall" "kenzok8/small" "master" "pkg" 
+UPDATE_PACKAGE "luci-app-turboacc" "chenmozhijin/turboacc" "luci" "pkg" 
 
 #更新软件包版本
 UPDATE_VERSION() {
