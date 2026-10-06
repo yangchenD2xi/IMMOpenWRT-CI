@@ -75,6 +75,7 @@ UPDATE_PACKAGE "vnt" "lmq8267/luci-app-vnt" "main"
 UPDATE_PACKAGE "luci-app-adguardhome" "kenzok8/openwrt-packages" "master" "pkg" 
 UPDATE_PACKAGE "luci-app-passwall" "kenzok8/small" "master" "pkg" 
 UPDATE_PACKAGE "luci-app-turboacc" "chenmozhijin/turboacc" "luci" "pkg" 
+UPDATE_PACKAGE "nft-fullcone" "chenmozhijin/turboacc" "package" "pkg" 
 
 #更新软件包版本
 UPDATE_VERSION() {
