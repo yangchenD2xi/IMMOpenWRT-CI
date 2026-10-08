@@ -76,19 +76,6 @@ UPDATE_PACKAGE "luci-app-adguardhome" "kenzok8/openwrt-packages" "master" "pkg"
 UPDATE_PACKAGE "luci-app-passwall" "kenzok8/small" "master" "pkg" 
 # UPDATE_PACKAGE "luci-app-turboacc" "chenmozhijin/turboacc" "luci" "pkg" 
 
-# 安装 mufeng05/turboacc
-echo "========== Installing mufeng05/turboacc =========="
-cd "$GITHUB_WORKSPACE/wrt" || exit 1
-curl -fsSL https://raw.githubusercontent.com/mufeng05/turboacc/main/add_turboacc.sh \
-  -o add_turboacc.sh || exit 1
-bash add_turboacc.sh || {
-    echo "ERROR: mufeng05/turboacc installation failed"
-    exit 1
-}
-rm -f add_turboacc.sh
-
-cd "$GITHUB_WORKSPACE/wrt/package" || exit 1
-
 #更新软件包版本
 UPDATE_VERSION() {
 	local PKG_NAME=$1
