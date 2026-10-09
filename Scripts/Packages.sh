@@ -71,9 +71,13 @@ UPDATE_PACKAGE "qmodem" "FUjr/QModem" "main"
 UPDATE_PACKAGE "quickfile" "sbwml/luci-app-quickfile" "main"
 UPDATE_PACKAGE "viking" "VIKINGYFY/packages" "main" "" "luci-app-timewol luci-app-wolplus"
 UPDATE_PACKAGE "vnt" "lmq8267/luci-app-vnt" "main"
-UPDATE_PACKAGE "turboacc" "chenmozhijin/turboacc" "luci" "add_turboacc.sh"
+# UPDATE_PACKAGE "turboacc" "chenmozhijin/turboacc" "luci" "add_turboacc.sh"
 UPDATE_PACKAGE "luci-app-adguardhome" "kenzok8/openwrt-packages" "master" "pkg" 
 UPDATE_PACKAGE "luci-app-passwall" "kenzok8/small" "master" "pkg" 
+# 安装 turboacc（使用官方脚本）
+echo "Installing turboacc via official script..."
+curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh --no-sfe
+rm -f add_turboacc.sh
 
 #更新软件包版本
 UPDATE_VERSION() {
@@ -115,6 +119,7 @@ UPDATE_VERSION() {
 		fi
 	done
 }
+
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 UPDATE_VERSION "sing-box"
