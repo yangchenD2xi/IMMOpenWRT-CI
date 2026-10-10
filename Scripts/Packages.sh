@@ -79,11 +79,14 @@ UPDATE_PACKAGE "luci-app-nss" "qosmio/nss-packages" "main"
 (
     set -e
     cd ..
-    trap 'rm -f add_turboacc.sh' EXIT
 
-    echo "Installing turboacc via official script..."
-    curl -fL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh
-    bash add_turboacc.sh --no-sfe
+    git clone --depth=1 --single-branch --branch luci \
+        https://github.com/chenmozhijin/turboacc.git /tmp/turboacc
+
+    mkdir -p package/turboacc
+    cp -a /tmp/turboacc/luci-app-turboacc package/turboacc/
+
+    rm -rf /tmp/turboacc
 )
 
 #更新软件包版本
