@@ -73,9 +73,18 @@ UPDATE_PACKAGE "luci-app-passwall" "kenzok8/small" "master" "pkg"
 UPDATE_PACKAGE "mosdns" "sbwml/luci-app-mosdns" "v5" "" "v2dat"
 UPDATE_PACKAGE "luci-app-nss" "qosmio/nss-packages" "main"
 # 安装 turboacc（使用官方脚本）
-echo "Installing turboacc via official script..."
-curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh --no-sfe
-rm -f add_turboacc.sh
+# echo "Installing turboacc via official script..."
+# curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh --no-sfe
+# rm -f add_turboacc.sh
+(
+    set -e
+    cd ..
+    trap 'rm -f add_turboacc.sh' EXIT
+
+    echo "Installing turboacc via official script..."
+    curl -fL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh
+    bash add_turboacc.sh --no-sfe
+)
 
 #更新软件包版本
 UPDATE_VERSION() {
